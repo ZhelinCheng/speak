@@ -15,7 +15,9 @@ import * as helmet from 'helmet'
 const isDev = process.env.NODE_ENV === 'development'
 
 async function bootstrap() {
-  const app = await NestFactory.create<NestExpressApplication>(AppModule, { cors: true })
+  const app = await NestFactory.create<NestExpressApplication>(AppModule, {
+    cors: true
+  })
   // 增加前缀
   app.setGlobalPrefix('v1')
   // 获取真实IP

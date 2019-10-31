@@ -12,6 +12,7 @@ import { MorganMiddleware } from '@nest-middlewares/morgan'
 import { APP_INTERCEPTOR, APP_PIPE } from '@nestjs/core'
 import { AppInterceptor } from './app.interceptor'
 import { ValidationPipe } from './app.pipe'
+import { AuthService } from './auth/auth.service';
 const isDev = process.env.NODE_ENV === 'development'
 
 @Module({
@@ -26,10 +27,10 @@ const isDev = process.env.NODE_ENV === 'development'
     {
       provide: APP_INTERCEPTOR,
       useClass: AppInterceptor
-    }
+    },
+    AuthService
   ]
 })
-
 export class AppModule {
   configure(consumer: MiddlewareConsumer) {
     MorganMiddleware.configure(isDev ? 'dev' : 'combined')
