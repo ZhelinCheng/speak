@@ -12,7 +12,7 @@ import { MorganMiddleware } from '@nest-middlewares/morgan'
 import { APP_INTERCEPTOR, APP_PIPE } from '@nestjs/core'
 import { AppInterceptor } from './app.interceptor'
 import { ValidationPipe } from './app.pipe'
-import { AuthService } from './auth/auth.service';
+import { AuthService } from './auth/auth.service'
 const isDev = process.env.NODE_ENV === 'development'
 
 @Module({
