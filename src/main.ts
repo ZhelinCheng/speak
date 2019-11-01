@@ -1,7 +1,7 @@
 /*
  * @Author: ChengZheLin
  * @Date: 2019-10-31 17:05:52
- * @LastEditTime: 2019-11-01 13:22:49
+ * @LastEditTime: 2019-11-01 17:20:23
  * @LastEditors: ChengZheLin
  * @Description: 主文件
  */
@@ -11,7 +11,7 @@ import { NestExpressApplication } from '@nestjs/platform-express'
 import { AppModule } from './app.module'
 import * as rateLimit from 'express-rate-limit'
 import * as helmet from 'helmet'
-
+import AppExceptionFilter from './app.exception.filter'
 // const isDev = process.env.NODE_ENV === 'development'
 
 async function bootstrap() {
@@ -41,7 +41,8 @@ async function bootstrap() {
   app.use(helmet())
   // 开启 CORS
   app.enableCors()
-
+  // 错误过滤
+  app.useGlobalFilters(new AppExceptionFilter())
   // 监听
   await app.listen(3070)
 }
