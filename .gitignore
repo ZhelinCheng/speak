@@ -1,5 +1,5 @@
-# database
-ormconfig.*
+# config
+config.*.js
 
 # compiled output
 /dist

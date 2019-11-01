@@ -1,7 +1,7 @@
 /*
  * @Author: ChengZheLin
  * @Date: 2019-10-31 17:05:52
- * @LastEditTime: 2019-10-31 17:25:26
+ * @LastEditTime: 2019-11-01 13:22:49
  * @LastEditors: ChengZheLin
  * @Description: 主文件
  */
@@ -12,7 +12,7 @@ import { AppModule } from './app.module'
 import * as rateLimit from 'express-rate-limit'
 import * as helmet from 'helmet'
 
-const isDev = process.env.NODE_ENV === 'development'
+// const isDev = process.env.NODE_ENV === 'development'
 
 async function bootstrap() {
   const app = await NestFactory.create<NestExpressApplication>(AppModule, {
