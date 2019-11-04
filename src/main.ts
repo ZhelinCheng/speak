@@ -11,8 +11,9 @@ import { NestExpressApplication } from '@nestjs/platform-express'
 import { AppModule } from './app.module'
 import * as rateLimit from 'express-rate-limit'
 import * as helmet from 'helmet'
+import { ValidationPipe } from '@nestjs/common'
 import AppExceptionFilter from './app.exception.filter'
-// const isDev = process.env.NODE_ENV === 'development'
+const isDev = process.env.NODE_ENV === 'development'
 
 async function bootstrap() {
   const app = await NestFactory.create<NestExpressApplication>(AppModule, {
@@ -41,6 +42,11 @@ async function bootstrap() {
   app.use(helmet())
   // 开启 CORS
   app.enableCors()
+  app.useGlobalPipes(new ValidationPipe( {
+    transform: true,
+    forbidUnknownValues: true,
+    disableErrorMessages: !isDev
+  }))
   // 错误过滤
   app.useGlobalFilters(new AppExceptionFilter())
   // 监听

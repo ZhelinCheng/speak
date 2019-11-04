@@ -26,7 +26,6 @@ export class CommentController {
   // 获取评论列表
   @Get('list')
   async getCommentList(@Query() query: CommentQueryDto) {
-    query = plainToClass(CommentQueryDto, query)
     return this.commentService.getCommentList(query)
   }
 }

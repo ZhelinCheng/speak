@@ -25,10 +25,6 @@ const isDev = process.env.NODE_ENV === 'development'
     {
       provide: APP_INTERCEPTOR,
       useClass: AppInterceptor
-    },
-    {
-      provide: APP_PIPE,
-      useClass: ValidationPipe
     }
   ]
 })
