@@ -41,6 +41,9 @@ export class CommentQueryDto {
   @IsString()
   @IsIn(['comment', 'reply'])
   readonly type: string
+
+  @IsString()
+  readonly id: string
 }
 
 // 评论DTO
